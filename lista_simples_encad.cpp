@@ -86,15 +86,6 @@ void qtdeElementos(){
 	printf("Quantidade de elementos: %d\n", contador);
 }
 
-/*
-Cenários de remoção:
-- remover 1o elemento
-- remover 2o elemento
-- remover o 3o elemento
-- remover o ultimo
-- elemento que nao existe na lista
-- lista vazia
-*/
 void removerLista(int valor){
 	struct No *ant; // ponteiro do elemento anterior da lista
 	struct No *aux;
@@ -114,9 +105,9 @@ void removerLista(int valor){
 	} else if(aux == cabeca){ // condição para remover o primeiro elemento, já que ele nao percorreu o while
 		cabeca = aux->prox;
 	} else {
-		ant->prox = aux->prox; //define o endereço do item prox da variavel anterior para o item prox da variável atual
-								//ex: queremos remover o 30, o 20 está antes e o 40 depois, ele altera o endereço do 20 que leva
-								// pro 30 e recebe o endereço do 30 que leva pro 40
+		ant->prox = aux->prox; /*define o endereço do item prox da variavel anterior para o item prox da variável atual
+					ex: queremos remover o 30, o 20 está antes e o 40 depois, ele altera o endereço do 20 que leva
+					pro 30 e recebe o endereço do 30 que leva pro 40 */
 	}
 	free(aux); // libera espaço do elemento que acabou de ser removido
 
