@@ -7,23 +7,22 @@ struct No{
 		int info;
 		struct No *prox;
 	};
-	// posso carregar o main antes da funÁ„o usando void inserirLista(int nr);
 	struct No *cabeca = NULL;
 	struct No *ult; // precisa de um ponteiro para o ultimo elemento da lista caso ela seja maior que 1
 	/*
 	Passo a passo
-	o novo receber· um endereÁo livre de tamanho struct No
-	ele passar· o valor inserido na funÁ„o pro info, e definir· o prox endereÁo como null
-	se o cabeca for null, ele passar· o endereÁo do primeiro ponteiro para o cabeca, indicando o inicio da lista
-	se n„o, ele aponta para o *prox do endereÁo passado e define como o endereÁo de novo.
+	o novo receber√° um endere√ßo livre de tamanho struct No
+	ele passar√° o valor inserido na fun√ß√£o pro info, e definir√° o prox endere√ßo como null
+	se o cabeca for null, ele passar√° o endere√ßo do primeiro ponteiro para o cabeca, indicando o inicio da lista
+	se n√£o, ele aponta para o *prox do endere√ßo passado e define como o endere√ßo de novo.
 	*/
 void inserirLista(int num){
-	struct No *novo; // o novo vai armazenar um endereÁo que o malloc ir· achar, e o tipo de novo ser· o struct No
-	novo =(struct No*) malloc(sizeof(struct No)); // malloc È uma funÁ„o que aloca espaÁo na memÛria de acordo com o argumento passado	
-                                  //sizeof vai pegar o tamanho do struct No e o malloc vai alocar um espaÁo do tamanho do struct No
+	struct No *novo; // o novo vai armazenar um endere√ßo que o malloc ir√° achar, e o tipo de novo ser√° o struct No
+	novo =(struct No*) malloc(sizeof(struct No)); // malloc √© uma fun√ß√£o que aloca espa√ßo na mem√≥ria de acordo com o argumento passado	
+                                  //sizeof vai pegar o tamanho do struct No e o malloc vai alocar um espa√ßo do tamanho do struct No
     novo->info = num;
     novo->prox = NULL;
-    if (cabeca == NULL){ //ele nao quer para onde ele aponta, ele quer saber se o endereÁo È null
+    if (cabeca == NULL){ //ele nao quer para onde ele aponta, ele quer saber se o endere√ßo √© null
 		cabeca=novo;
 	} else {
 		ult->prox = novo;
@@ -49,7 +48,7 @@ void menu(){
 		system("CLS");
 		printf("1 - Inserir\n");
 		printf("2 - Exibir\n");
-		printf("3 - Remover n˙mero\n");
+		printf("3 - Remover n√∫mero\n");
 		printf("4 - Quantidade da lista\n");
 		printf("5 - Sair\n");
 		printf("Escolha a opcao: ");
@@ -76,7 +75,7 @@ void menu(){
 
 void exibirLista(){
 	struct No *aux;
-	aux = cabeca; //definimos outro ponteiro para nao mexermos na lista com a chance de perdÍ-la
+	aux = cabeca; //definimos outro ponteiro para nao mexermos na lista com a chance de perd√™-la
 	while (aux != NULL){
 		printf("%x %d -> %x\n", aux, aux->info, aux->prox);
 		aux = aux->prox;
@@ -88,7 +87,7 @@ void qtdeElementos(){
 }
 
 /*
-Cen·rios de remoÁ„o:
+Cen√°rios de remo√ß√£o:
 - remover 1o elemento
 - remover 2o elemento
 - remover o 3o elemento
@@ -106,19 +105,19 @@ void removerLista(int valor){
 	aux = cabeca;
 	
 	while(aux->info != valor && aux->prox != NULL){
-		ant = aux; // salva o endereÁo do elemento anterior
+		ant = aux; // salva o endere√ßo do elemento anterior
 		aux = aux->prox;
 	}
 	if(aux->info != valor && aux->prox == NULL){
-		printf("Valor n„o encontrado.");
+		printf("Valor n√£o encontrado.");
 		return;
-	} else if(aux == cabeca){ // condiÁ„o para remover o primeiro elemento, j· que ele nao percorreu o while
+	} else if(aux == cabeca){ // condi√ß√£o para remover o primeiro elemento, j√° que ele nao percorreu o while
 		cabeca = aux->prox;
 	} else {
-		ant->prox = aux->prox; //define o endereÁo do item prox da variavel anterior para o item prox da vari·vel atual
-								//ex: queremos remover o 30, o 20 est· antes e o 40 depois, ele altera o endereÁo do 20 que leva
-								// pro 30 e recebe o endereÁo do 30 que leva pro 40
+		ant->prox = aux->prox; //define o endere√ßo do item prox da variavel anterior para o item prox da vari√°vel atual
+								//ex: queremos remover o 30, o 20 est√° antes e o 40 depois, ele altera o endere√ßo do 20 que leva
+								// pro 30 e recebe o endere√ßo do 30 que leva pro 40
 	}
-	free(aux); // libera espaÁo do elemento que acabou de ser removido
+	free(aux); // libera espa√ßo do elemento que acabou de ser removido
 
 }
